@@ -1,0 +1,28 @@
+﻿<Window x:Class="Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Menu x:Name="FileMenu" >
+                <MenuItem Header="File">
+                    <MenuItem Header="Add"></MenuItem>
+                    <MenuItem Header="Edit"></MenuItem>
+                    <MenuItem Header="Remove"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Users"/>
+                <MenuItem Header="Warehouse"/>
+            </Menu>
+        </StackPanel>
+        <DockPanel x:Name="MainView" Grid.Row="1"/>
+        <Label x:Name="ConnectionData" Grid.Row="2"/>
+    </Grid>
+</Window>
