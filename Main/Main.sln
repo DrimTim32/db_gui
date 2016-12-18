@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{0BF99BE1-9683-4888-B302-6F99AFAFB54A}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationWindow", "StationWindow\StationWindow.csproj", "{3B477F7A-1E71-47FB-A8CA-C34001FD7483}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiBase", "GuiBase\GuiBase.csproj", "{C8A9A34D-C7DF-4F19-BC73-ABC0E36A7D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{95FDF41F-260E-4D9D-9194-6920B67CCA49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,22 @@ Global
 		{C8A9A34D-C7DF-4F19-BC73-ABC0E36A7D62}.Release|x64.Build.0 = Release|Any CPU
 		{C8A9A34D-C7DF-4F19-BC73-ABC0E36A7D62}.Release|x86.ActiveCfg = Release|Any CPU
 		{C8A9A34D-C7DF-4F19-BC73-ABC0E36A7D62}.Release|x86.Build.0 = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|ARM.Build.0 = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|x64.Build.0 = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Debug|x86.Build.0 = Debug|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|ARM.ActiveCfg = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|ARM.Build.0 = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|x64.ActiveCfg = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|x64.Build.0 = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|x86.ActiveCfg = Release|Any CPU
+		{95FDF41F-260E-4D9D-9194-6920B67CCA49}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

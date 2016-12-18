@@ -37,5 +37,11 @@ namespace Main
             return btn;
 
         }
+
+        private void UsersClick(object sender, RoutedEventArgs e)
+        {
+            MainView.Children.Clear();
+            MainView.Children.Add(new DataGrid());
+        }
     }
 }
