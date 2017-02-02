@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5f25c41fdb43464c9aa1e03de65c46ff" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="BarProjectModel.database_firewall_rules" Width="1.5" PointX="0.75" PointY="10.5" />
+      <Diagram DiagramId="5f25c41fdb43464c9aa1e03de65c46ff" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="BarProjectModel.database_firewall_rules" Width="1.5" PointX="0.5" PointY="11.375" />
         <EntityTypeShape EntityType="BarProjectModel.Category" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="BarProjectModel.EmployePermission" Width="1.5" PointX="5.75" PointY="9.5" />
+        <EntityTypeShape EntityType="BarProjectModel.EmployePermission" Width="1.5" PointX="5.75" PointY="10" />
         <EntityTypeShape EntityType="BarProjectModel.Ingredient" Width="1.5" PointX="9.75" PointY="6.625" />
         <EntityTypeShape EntityType="BarProjectModel.Price" Width="1.5" PointX="9.75" PointY="3.25" />
         <EntityTypeShape EntityType="BarProjectModel.Product" Width="1.5" PointX="5.25" PointY="3.875" />
@@ -17,9 +17,10 @@
         <EntityTypeShape EntityType="BarProjectModel.Tax" Width="1.5" PointX="3" PointY="7.625" />
         <EntityTypeShape EntityType="BarProjectModel.Unit" Width="1.5" PointX="3" PointY="4.125" />
         <EntityTypeShape EntityType="BarProjectModel.UnitType" Width="1.5" PointX="0.75" PointY="4.25" />
-        <EntityTypeShape EntityType="BarProjectModel.User" Width="1.5" PointX="7.75" PointY="9.5" />
+        <EntityTypeShape EntityType="BarProjectModel.User" Width="1.5" PointX="8" PointY="9.75" />
         <AssociationConnector Association="BarProjectModel.FK__Categorie__overr__5E8A0973" />
         <AssociationConnector Association="BarProjectModel.FK__Products__catego__33F4B129" />
+        <AssociationConnector Association="BarProjectModel.FK__Users__permissio__573DED66" />
         <AssociationConnector Association="BarProjectModel.FK__Ingredien__ingre__4336F4B9" />
         <AssociationConnector Association="BarProjectModel.FK__Ingredien__recei__4242D080" />
         <AssociationConnector Association="BarProjectModel.FK__Prices__product___46136164" />

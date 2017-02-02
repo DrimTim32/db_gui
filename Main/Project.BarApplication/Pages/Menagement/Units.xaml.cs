@@ -76,7 +76,6 @@
                 DataGridRow dgr = (DataGridRow)(dg.ItemContainerGenerator.ContainerFromIndex(dg.SelectedIndex));
                 if (e.Key == Key.Delete && !dgr.IsEditing)
                 {
-                    // User is attempting to delete the row
                     var result = ModernDialog.ShowMessage("About to delete the current row.\n\nProceed?", "Delete",
                         MessageBoxButton.YesNo);
                     if (result == MessageBoxResult.No)
@@ -85,8 +84,8 @@
                     }
                     else
                     {
-                        var cat = (ShowableUnit)dgr.Item;
-                        var data = UnitsFunctions.RemoveUnit(cat.Name);
+                        var unit = (ShowableUnit)dgr.Item;
+                        var data = UnitsFunctions.RemoveUnit(unit.Id);
                         RefreshData();
                         if (data != "")
                         {

@@ -103,16 +103,17 @@ namespace DatabaseConnector
                 new ObjectParameter("tax_name", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deleteTax", tax_nameParameter);
-        } 
-
-        public virtual int removeUnit(string unit_name)
+        }
+    
+        public virtual int deleteUnit(string unit_name)
         {
             var unit_nameParameter = unit_name != null ?
                 new ObjectParameter("unit_name", unit_name) :
                 new ObjectParameter("unit_name", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("removeUnit", unit_nameParameter);
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deleteUnit", unit_nameParameter);
         }
+    
         public virtual int getRandom(Nullable<int> seed, ObjectParameter random)
         {
             var seedParameter = seed.HasValue ?
@@ -322,14 +323,42 @@ namespace DatabaseConnector
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updatePrice", priduct_idParameter, new_priceParameter);
         }
     
-        public virtual int removeTax(string tax_name)
+        public virtual int removeTax(Nullable<int> tax_id)
         {
-            var tax_nameParameter = tax_name != null ?
-                new ObjectParameter("tax_name", tax_name) :
-                new ObjectParameter("tax_name", typeof(string));
+            var tax_idParameter = tax_id.HasValue ?
+                new ObjectParameter("tax_id", tax_id) :
+                new ObjectParameter("tax_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("removeTax", tax_nameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("removeTax", tax_idParameter);
         }
     
+        public virtual int removeUnit(Nullable<int> unit_id)
+        {
+            var unit_idParameter = unit_id.HasValue ?
+                new ObjectParameter("unit_id", unit_id) :
+                new ObjectParameter("unit_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("removeUnit", unit_idParameter);
+        }
+    
+        [DbFunction("BarProjectEntities", "productsByCategory")]
+        public virtual IQueryable<productsByCategory_Result> productsByCategory(Nullable<int> category_id)
+        {
+            var category_idParameter = category_id.HasValue ?
+                new ObjectParameter("category_id", category_id) :
+                new ObjectParameter("category_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<productsByCategory_Result>("[BarProjectEntities].[productsByCategory](@category_id)", category_idParameter);
+        }
+    
+        [DbFunction("BarProjectEntities", "soldProductDetails")]
+        public virtual IQueryable<soldProductDetails_Result> soldProductDetails(Nullable<int> product_id)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("product_id", product_id) :
+                new ObjectParameter("product_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<soldProductDetails_Result>("[BarProjectEntities].[soldProductDetails](@product_id)", product_idParameter);
+        }
     }
 }

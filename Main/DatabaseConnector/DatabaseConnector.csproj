@@ -93,6 +93,9 @@
     <Compile Include="Product.cs">
       <DependentUpon>BarProjectEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="productsByCategory_Result.cs">
+      <DependentUpon>BarProjectEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProductsSold.cs">
       <DependentUpon>BarProjectEntities.tt</DependentUpon>
     </Compile>
@@ -101,6 +104,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receipt.cs">
+      <DependentUpon>BarProjectEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="soldProductDetails_Result.cs">
       <DependentUpon>BarProjectEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tax.cs">

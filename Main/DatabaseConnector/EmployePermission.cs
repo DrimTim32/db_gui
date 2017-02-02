@@ -14,8 +14,17 @@ namespace DatabaseConnector
     
     public partial class EmployePermission
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EmployePermission()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public byte id { get; set; }
         public Nullable<byte> value { get; set; }
         public string name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

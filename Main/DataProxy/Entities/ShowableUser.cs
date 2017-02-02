@@ -9,7 +9,7 @@
         public ShowableUser(User user)
         {
             Name = user.name;
-            Permission = ((user.permission ?? (short)0).ToUserPrivledges()).ToReadable();
+            Permission = ((user.EmployePermission.value ?? (short)0).ToUserPrivledges()).ToReadable();
             Username = user.username;
             Surname = user.surname;
         }

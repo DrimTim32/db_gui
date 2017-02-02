@@ -55,13 +55,13 @@ namespace DataProxy.Functions
 
         }
 
-        public static string RemoveUnit(string name)
+        public static string RemoveUnit(int id)
         {
             try
             {
                 using (var db = new BarProjectEntities())
                 {
-                    db.removeUnit(name);
+                    db.removeUnit(id);
                 }
             }
             catch (Exception ex)

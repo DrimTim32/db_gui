@@ -5,16 +5,55 @@ namespace DataProxy.Functions
 {
     using System.Linq;
     using DatabaseConnector;
+    using Entities;
     using Extensions;
 
     public static class TaxesFunctions
     {
-        public static IEnumerable<Entities.Tax> GetTaxes()
+        public static IEnumerable<Entities.ShowableTax> GetAllTaxes()
         {
             using (var db = new BarProjectEntities())
             {
-                return db.Taxes.Select(x => x).ToAnotherType<Tax, Entities.Tax>().ToList();
+                return db.Taxes.Select(x => x).ToAnotherType<Tax, Entities.ShowableTax>().ToList();
             }
+        }
+        public static string AddTax(ShowableTax tax)
+        {
+            try
+            {
+                using (var db = new BarProjectEntities())
+                {
+                    db.addTax(tax.TaxName, tax.TaxValue);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message += "\nInner:" + ex.InnerException.Message;
+                return message;
+            }
+            return "";
+
+        }
+
+        public static string RemoveTax(int id)
+        {
+            try
+            {
+                using (var db = new BarProjectEntities())
+                {
+                    db.removeTax(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message += "\nInner:" + ex.InnerException.Message;
+                return message;
+            }
+            return "";
         }
     }
 }
