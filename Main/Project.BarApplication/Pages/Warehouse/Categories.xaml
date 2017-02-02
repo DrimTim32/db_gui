@@ -11,7 +11,10 @@
 
     <Grid>
         <Grid>
-            <DataGrid Name="DataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False">
+            <DataGrid Name="DataGrid"                       
+                      DataContext="{Binding RelativeSource={RelativeSource AncestorType=Page}}"
+                      ItemsSource="{Binding CategoriesList}" 
+                      AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <mui:DataGridTextColumn Header="Slug"  Binding="{Binding Slug}"/>
                     <mui:DataGridTextColumn Header="Name" Binding="{Binding Name}" />

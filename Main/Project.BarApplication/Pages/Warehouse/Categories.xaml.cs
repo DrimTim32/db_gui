@@ -15,27 +15,54 @@ using System.Windows.Shapes;
 
 namespace Project.BarApplication.Pages.Warehouse
 {
+    using System.Collections.ObjectModel;
     using DataProxy.Entities;
     using DataProxy.Functions;
     using FirstFloor.ModernUI.Windows.Controls;
 
     public partial class Categories : Page
     {
-        private List<ShowableCategory> CategoriesList { get; set; }
+        private IList<ShowableCategory> _categories;
+        public IList<ShowableCategory> CategoriesList
+        {
+            get
+            {
+                if (_categories == null)
+                    _categories = new ObservableCollection<ShowableCategory>(CategoriesFunctions.GetAllCategories());
+                return _categories;
+            }
+            set { _categories = value; }
+        }
 
         private List<string> PossibleOverridingCategories
         {
             get { return CategoriesList.Select(x => x.Name).ToList(); }
         }
+
         public Categories()
         {
             InitializeComponent();
-            CategoriesList = CategoriesFunctions.GetAllCategories();
-            DataGrid.DataContext = CategoriesList;
             DataGridCombo.ItemsSource = PossibleOverridingCategories;
-            DataGrid.AddingNewItem += DataGrid_AddingNewItem;
             DataGrid.PreviewKeyDown += DataGrid_PreviewKeyDown;
+            DataGrid.RowEditEnding += DataGrid_RowEditEnding;
 
+        }
+
+        private void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            if (this.DataGrid.SelectedItem != null)
+            {
+                (sender as DataGrid).RowEditEnding -= DataGrid_RowEditEnding;
+                (sender as DataGrid).CommitEdit();
+                (sender as DataGrid).Items.Refresh();
+                (sender as DataGrid).RowEditEnding += DataGrid_RowEditEnding;
+                var cat = (ShowableCategory)e.Row.Item;
+                var q = CategoriesFunctions.AddCategory(cat);
+                if (q != "")
+                    ModernDialog.ShowMessage(q, "Problem with writing to database", MessageBoxButton.OK);
+                RefreshOverridingPossibilities();
+            }
+            else return;
         }
 
         void DataGrid_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -47,10 +74,17 @@ namespace Project.BarApplication.Pages.Warehouse
                 if (e.Key == Key.Delete && !dgr.IsEditing)
                 {
                     // User is attempting to delete the row
-                    var result = ModernDialog.ShowMessage(
-                        "About to delete the current row.\n\nProceed?",
-                        "Delete", MessageBoxButton.YesNo);
-                    e.Handled = (result == MessageBoxResult.No);
+                    var result = ModernDialog.ShowMessage("About to delete the current row.\n\nProceed?", "Delete",
+                        MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.No)
+                    {
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        var cat = (ShowableCategory)dgr.Item;
+                        var data = CategoriesFunctions.RemoveCategory(cat.Id);
+                    }
                 }
             }
         }
@@ -58,10 +92,6 @@ namespace Project.BarApplication.Pages.Warehouse
         private void RefreshOverridingPossibilities()
         {
             DataGridCombo.ItemsSource = PossibleOverridingCategories;
-        }
-        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
-        {
-            RefreshOverridingPossibilities();
         }
 
     }

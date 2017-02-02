@@ -21,5 +21,39 @@ namespace DataProxy.Functions
                         select data).ToAnotherType<Category, ShowableCategory>().ToList();
             }
         }
+
+        public static string AddCategory(ShowableCategory cat)
+        {
+            try
+            {
+                using (var db = new BarProjectEntities())
+                {
+                    int? overriding = null;
+                    if (cat.Overriding != "")
+                        overriding = db.Categories.Where(x => x.category_name == cat.Overriding).Select(x => x.id).FirstOrDefault();
+                    db.addCategory(cat.Name, cat.Slug, overriding);
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "";
+        }
+        public static string RemoveCategory(int id)
+        {
+            try
+            {
+                using (var db = new BarProjectEntities())
+                {
+                    db.removeCategory(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "";
+        }
     }
 }

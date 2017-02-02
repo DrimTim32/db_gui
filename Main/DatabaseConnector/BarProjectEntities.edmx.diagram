@@ -5,29 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5f25c41fdb43464c9aa1e03de65c46ff" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="BarProjectModel.Category" Width="1.5" PointX="3" PointY="10.875" />
-        <EntityTypeShape EntityType="BarProjectModel.EmployePermission" Width="1.5" PointX="5.75" PointY="9.125" />
-        <EntityTypeShape EntityType="BarProjectModel.Ingredient" Width="1.5" PointX="9.75" PointY="6.25" />
-        <EntityTypeShape EntityType="BarProjectModel.Price" Width="1.5" PointX="9.75" PointY="2.75" />
-        <EntityTypeShape EntityType="BarProjectModel.Product" Width="1.5" PointX="5.25" PointY="3.5" />
-        <EntityTypeShape EntityType="BarProjectModel.ProductsSold" Width="1.5" PointX="7.5" PointY="3.75" />
-        <EntityTypeShape EntityType="BarProjectModel.ProductsStored" Width="1.5" PointX="7.5" PointY="6.375" />
-        <EntityTypeShape EntityType="BarProjectModel.Receipt" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="BarProjectModel.Tax" Width="1.5" PointX="3" PointY="7.25" />
-        <EntityTypeShape EntityType="BarProjectModel.Unit" Width="1.5" PointX="3" PointY="3.625" />
-        <EntityTypeShape EntityType="BarProjectModel.UnitType" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="BarProjectModel.User" Width="1.5" PointX="7.75" PointY="9.125" />
-        <EntityTypeShape EntityType="BarProjectModel.database_firewall_rules" Width="1.5" PointX="9.75" PointY="9.125" />
+        <EntityTypeShape EntityType="BarProjectModel.Category" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="BarProjectModel.EmployePermission" Width="1.5" PointX="5.75" PointY="9.5" />
+        <EntityTypeShape EntityType="BarProjectModel.Ingredient" Width="1.5" PointX="9.75" PointY="6.625" />
+        <EntityTypeShape EntityType="BarProjectModel.Price" Width="1.5" PointX="9.75" PointY="3.25" />
+        <EntityTypeShape EntityType="BarProjectModel.Product" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="BarProjectModel.ProductsSold" Width="1.5" PointX="7.5" PointY="4.25" />
+        <EntityTypeShape EntityType="BarProjectModel.ProductsStored" Width="1.5" PointX="7.5" PointY="6.875" />
+        <EntityTypeShape EntityType="BarProjectModel.Receipt" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="BarProjectModel.Tax" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="BarProjectModel.Unit" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="BarProjectModel.UnitType" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="BarProjectModel.User" Width="1.5" PointX="7.75" PointY="9.5" />
+        <EntityTypeShape EntityType="BarProjectModel.database_firewall_rules" Width="1.5" PointX="0.75" PointY="10.5" />
         <AssociationConnector Association="BarProjectModel.FK__Categorie__overr__5E8A0973" />
-        <AssociationConnector Association="BarProjectModel.FK__Products__catego__2D7CBDC4" />
-        <AssociationConnector Association="BarProjectModel.FK__Ingredien__ingre__39E294A9" />
-        <AssociationConnector Association="BarProjectModel.FK__Ingredien__recei__38EE7070" />
-        <AssociationConnector Association="BarProjectModel.FK__Prices__product___3F9B6DFF" />
-        <AssociationConnector Association="BarProjectModel.FK__Products__tax_id__2F650636" />
-        <AssociationConnector Association="BarProjectModel.FK__Products__unit_i__2E70E1FD" />
-        <AssociationConnector Association="BarProjectModel.FK__ProductsSold__id__324172E1" />
-        <AssociationConnector Association="BarProjectModel.FK__ProductsStor__id__361203C5" />
-        <AssociationConnector Association="BarProjectModel.FK__ProductsS__recei__3335971A" />
+        <AssociationConnector Association="BarProjectModel.FK__Products__catego__4277DAAA" />
+        <AssociationConnector Association="BarProjectModel.FK__Ingredien__ingre__50C5FA01" />
+        <AssociationConnector Association="BarProjectModel.FK__Ingredien__recei__4FD1D5C8" />
+        <AssociationConnector Association="BarProjectModel.FK__Prices__product___53A266AC" />
+        <AssociationConnector Association="BarProjectModel.FK__Products__tax_id__4460231C" />
+        <AssociationConnector Association="BarProjectModel.FK__Products__unit_i__436BFEE3" />
+        <AssociationConnector Association="BarProjectModel.FK__ProductsSold__id__4C0144E4" />
+        <AssociationConnector Association="BarProjectModel.FK__ProductsStor__id__4924D839" />
+        <AssociationConnector Association="BarProjectModel.FK__ProductsS__recei__4CF5691D" />
         <AssociationConnector Association="BarProjectModel.FK__Units__unit_type__12C8C788" />
       </Diagram>
     </edmx:Diagrams>

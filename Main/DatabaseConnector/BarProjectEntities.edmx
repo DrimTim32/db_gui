@@ -67,7 +67,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="512" />
         </EntityType>
         <EntityType Name="Taxes">
@@ -136,7 +136,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ingredien__ingre__39E294A9">
+        <Association Name="FK__Ingredien__ingre__50C5FA01">
           <End Role="ProductsStored" Type="Self.ProductsStored" Multiplicity="1" />
           <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -148,7 +148,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ingredien__recei__38EE7070">
+        <Association Name="FK__Ingredien__recei__4FD1D5C8">
           <End Role="Receipts" Type="Self.Receipts" Multiplicity="1" />
           <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +160,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Prices__product___3F9B6DFF">
+        <Association Name="FK__Prices__product___53A266AC">
           <End Role="ProductsSold" Type="Self.ProductsSold" Multiplicity="1" />
           <End Role="Prices" Type="Self.Prices" Multiplicity="*" />
           <ReferentialConstraint>
@@ -172,7 +172,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products__catego__2D7CBDC4">
+        <Association Name="FK__Products__catego__4277DAAA">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +184,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products__tax_id__2F650636">
+        <Association Name="FK__Products__tax_id__4460231C">
           <End Role="Taxes" Type="Self.Taxes" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +196,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products__unit_i__2E70E1FD">
+        <Association Name="FK__Products__unit_i__436BFEE3">
           <End Role="Units" Type="Self.Units" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +208,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsS__recei__3335971A">
+        <Association Name="FK__ProductsS__recei__4CF5691D">
           <End Role="Receipts" Type="Self.Receipts" Multiplicity="0..1" />
           <End Role="ProductsSold" Type="Self.ProductsSold" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,7 +220,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsSold__id__324172E1">
+        <Association Name="FK__ProductsSold__id__4C0144E4">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="ProductsSold" Type="Self.ProductsSold" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -232,7 +232,7 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsStor__id__361203C5">
+        <Association Name="FK__ProductsStor__id__4924D839">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="ProductsStored" Type="Self.ProductsStored" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -259,6 +259,20 @@ warning 6002: The table/view 'BarProject.sys.database_firewall_rules' does not h
         <!--Errors Found During Generation:
 warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK__Users__permissio__7EC1CEDB" />-->
+        <Function Name="addCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="category_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="slug" Type="nvarchar" Mode="In" />
+          <Parameter Name="overriding_category" Type="int" Mode="In" />
+        </Function>
+        <Function Name="addIngredient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="receipt_id" Type="int" Mode="In" />
+          <Parameter Name="ingredient_id" Type="int" Mode="In" />
+          <Parameter Name="quantity" Type="float" Mode="In" />
+        </Function>
+        <Function Name="addReceipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="description" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="addTax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tax_name" Type="nvarchar" Mode="In" />
           <Parameter Name="tax_value" Type="float" Mode="In" />
@@ -294,6 +308,9 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <Parameter Name="Salt" Type="char" Mode="InOut" />
         </Function>
         <Function Name="getSeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="removeCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="updateTax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="new_tax_name" Type="nvarchar" Mode="In" />
@@ -335,39 +352,39 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Categories1" EntitySet="Categories" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ingredien__ingre__39E294A9" Association="Self.FK__Ingredien__ingre__39E294A9">
+          <AssociationSet Name="FK__Ingredien__ingre__50C5FA01" Association="Self.FK__Ingredien__ingre__50C5FA01">
             <End Role="ProductsStored" EntitySet="ProductsStored" />
             <End Role="Ingredients" EntitySet="Ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ingredien__recei__38EE7070" Association="Self.FK__Ingredien__recei__38EE7070">
+          <AssociationSet Name="FK__Ingredien__recei__4FD1D5C8" Association="Self.FK__Ingredien__recei__4FD1D5C8">
             <End Role="Receipts" EntitySet="Receipts" />
             <End Role="Ingredients" EntitySet="Ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__Prices__product___3F9B6DFF" Association="Self.FK__Prices__product___3F9B6DFF">
+          <AssociationSet Name="FK__Prices__product___53A266AC" Association="Self.FK__Prices__product___53A266AC">
             <End Role="ProductsSold" EntitySet="ProductsSold" />
             <End Role="Prices" EntitySet="Prices" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__catego__2D7CBDC4" Association="Self.FK__Products__catego__2D7CBDC4">
+          <AssociationSet Name="FK__Products__catego__4277DAAA" Association="Self.FK__Products__catego__4277DAAA">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__tax_id__2F650636" Association="Self.FK__Products__tax_id__2F650636">
+          <AssociationSet Name="FK__Products__tax_id__4460231C" Association="Self.FK__Products__tax_id__4460231C">
             <End Role="Taxes" EntitySet="Taxes" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__unit_i__2E70E1FD" Association="Self.FK__Products__unit_i__2E70E1FD">
+          <AssociationSet Name="FK__Products__unit_i__436BFEE3" Association="Self.FK__Products__unit_i__436BFEE3">
             <End Role="Units" EntitySet="Units" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsS__recei__3335971A" Association="Self.FK__ProductsS__recei__3335971A">
+          <AssociationSet Name="FK__ProductsS__recei__4CF5691D" Association="Self.FK__ProductsS__recei__4CF5691D">
             <End Role="Receipts" EntitySet="Receipts" />
             <End Role="ProductsSold" EntitySet="ProductsSold" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsSold__id__324172E1" Association="Self.FK__ProductsSold__id__324172E1">
+          <AssociationSet Name="FK__ProductsSold__id__4C0144E4" Association="Self.FK__ProductsSold__id__4C0144E4">
             <End Role="Products" EntitySet="Products" />
             <End Role="ProductsSold" EntitySet="ProductsSold" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsStor__id__361203C5" Association="Self.FK__ProductsStor__id__361203C5">
+          <AssociationSet Name="FK__ProductsStor__id__4924D839" Association="Self.FK__ProductsStor__id__4924D839">
             <End Role="Products" EntitySet="Products" />
             <End Role="ProductsStored" EntitySet="ProductsStored" />
           </AssociationSet>
@@ -446,39 +463,39 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             <End Role="Category" EntitySet="Categories" />
             <End Role="Category1" EntitySet="Categories" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__catego__2D7CBDC4" Association="BarProjectModel.FK__Products__catego__2D7CBDC4">
+          <AssociationSet Name="FK__Products__catego__4277DAAA" Association="BarProjectModel.FK__Products__catego__4277DAAA">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ingredien__ingre__39E294A9" Association="BarProjectModel.FK__Ingredien__ingre__39E294A9">
+          <AssociationSet Name="FK__Ingredien__ingre__50C5FA01" Association="BarProjectModel.FK__Ingredien__ingre__50C5FA01">
             <End Role="ProductsStored" EntitySet="ProductsStoreds" />
             <End Role="Ingredient" EntitySet="Ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ingredien__recei__38EE7070" Association="BarProjectModel.FK__Ingredien__recei__38EE7070">
+          <AssociationSet Name="FK__Ingredien__recei__4FD1D5C8" Association="BarProjectModel.FK__Ingredien__recei__4FD1D5C8">
             <End Role="Receipt" EntitySet="Receipts" />
             <End Role="Ingredient" EntitySet="Ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__Prices__product___3F9B6DFF" Association="BarProjectModel.FK__Prices__product___3F9B6DFF">
+          <AssociationSet Name="FK__Prices__product___53A266AC" Association="BarProjectModel.FK__Prices__product___53A266AC">
             <End Role="ProductsSold" EntitySet="ProductsSolds" />
             <End Role="Price" EntitySet="Prices" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__tax_id__2F650636" Association="BarProjectModel.FK__Products__tax_id__2F650636">
+          <AssociationSet Name="FK__Products__tax_id__4460231C" Association="BarProjectModel.FK__Products__tax_id__4460231C">
             <End Role="Tax" EntitySet="Taxes" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__unit_i__2E70E1FD" Association="BarProjectModel.FK__Products__unit_i__2E70E1FD">
+          <AssociationSet Name="FK__Products__unit_i__436BFEE3" Association="BarProjectModel.FK__Products__unit_i__436BFEE3">
             <End Role="Unit" EntitySet="Units" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsSold__id__324172E1" Association="BarProjectModel.FK__ProductsSold__id__324172E1">
+          <AssociationSet Name="FK__ProductsSold__id__4C0144E4" Association="BarProjectModel.FK__ProductsSold__id__4C0144E4">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductsSold" EntitySet="ProductsSolds" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsStor__id__361203C5" Association="BarProjectModel.FK__ProductsStor__id__361203C5">
+          <AssociationSet Name="FK__ProductsStor__id__4924D839" Association="BarProjectModel.FK__ProductsStor__id__4924D839">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductsStored" EntitySet="ProductsStoreds" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductsS__recei__3335971A" Association="BarProjectModel.FK__ProductsS__recei__3335971A">
+          <AssociationSet Name="FK__ProductsS__recei__4CF5691D" Association="BarProjectModel.FK__ProductsS__recei__4CF5691D">
             <End Role="Receipt" EntitySet="Receipts" />
             <End Role="ProductsSold" EntitySet="ProductsSolds" />
           </AssociationSet>
@@ -486,7 +503,24 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             <End Role="UnitType" EntitySet="UnitTypes" />
             <End Role="Unit" EntitySet="Units" />
           </AssociationSet>
-        </EntityContainer>
+          <FunctionImport Name="addCategory">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="category_name" Mode="In" Type="String" />
+            <Parameter Name="slug" Mode="In" Type="String" />
+            <Parameter Name="overriding_category" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="addIngredient">
+            <Parameter Name="receipt_id" Mode="In" Type="Int32" />
+            <Parameter Name="ingredient_id" Mode="In" Type="Int32" />
+            <Parameter Name="quantity" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="addReceipt">
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="removeCategory">
+            <Parameter Name="category_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="id" />
@@ -496,7 +530,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <Property Name="category_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Categories1" Relationship="BarProjectModel.FK__Categorie__overr__5E8A0973" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Category1" Relationship="BarProjectModel.FK__Categorie__overr__5E8A0973" FromRole="Category1" ToRole="Category" />
-          <NavigationProperty Name="Products" Relationship="BarProjectModel.FK__Products__catego__2D7CBDC4" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="BarProjectModel.FK__Products__catego__4277DAAA" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="EmployePermission">
           <Key>
@@ -514,8 +548,8 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <Property Name="receipt_id" Type="Int32" Nullable="false" />
           <Property Name="ingredient_id" Type="Int32" Nullable="false" />
           <Property Name="quantity" Type="Double" Nullable="false" />
-          <NavigationProperty Name="ProductsStored" Relationship="BarProjectModel.FK__Ingredien__ingre__39E294A9" FromRole="Ingredient" ToRole="ProductsStored" />
-          <NavigationProperty Name="Receipt" Relationship="BarProjectModel.FK__Ingredien__recei__38EE7070" FromRole="Ingredient" ToRole="Receipt" />
+          <NavigationProperty Name="ProductsStored" Relationship="BarProjectModel.FK__Ingredien__ingre__50C5FA01" FromRole="Ingredient" ToRole="ProductsStored" />
+          <NavigationProperty Name="Receipt" Relationship="BarProjectModel.FK__Ingredien__recei__4FD1D5C8" FromRole="Ingredient" ToRole="Receipt" />
         </EntityType>
         <EntityType Name="Price">
           <Key>
@@ -525,7 +559,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <Property Name="product_id" Type="Int32" Nullable="false" />
           <Property Name="period_start" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="price1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <NavigationProperty Name="ProductsSold" Relationship="BarProjectModel.FK__Prices__product___3F9B6DFF" FromRole="Price" ToRole="ProductsSold" />
+          <NavigationProperty Name="ProductsSold" Relationship="BarProjectModel.FK__Prices__product___53A266AC" FromRole="Price" ToRole="ProductsSold" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -533,37 +567,37 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Category" Relationship="BarProjectModel.FK__Products__catego__2D7CBDC4" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Tax" Relationship="BarProjectModel.FK__Products__tax_id__2F650636" FromRole="Product" ToRole="Tax" />
-          <NavigationProperty Name="Unit" Relationship="BarProjectModel.FK__Products__unit_i__2E70E1FD" FromRole="Product" ToRole="Unit" />
-          <NavigationProperty Name="ProductsSold" Relationship="BarProjectModel.FK__ProductsSold__id__324172E1" FromRole="Product" ToRole="ProductsSold" />
-          <NavigationProperty Name="ProductsStored" Relationship="BarProjectModel.FK__ProductsStor__id__361203C5" FromRole="Product" ToRole="ProductsStored" />
+          <NavigationProperty Name="Category" Relationship="BarProjectModel.FK__Products__catego__4277DAAA" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Tax" Relationship="BarProjectModel.FK__Products__tax_id__4460231C" FromRole="Product" ToRole="Tax" />
+          <NavigationProperty Name="Unit" Relationship="BarProjectModel.FK__Products__unit_i__436BFEE3" FromRole="Product" ToRole="Unit" />
+          <NavigationProperty Name="ProductsSold" Relationship="BarProjectModel.FK__ProductsSold__id__4C0144E4" FromRole="Product" ToRole="ProductsSold" />
+          <NavigationProperty Name="ProductsStored" Relationship="BarProjectModel.FK__ProductsStor__id__4924D839" FromRole="Product" ToRole="ProductsStored" />
         </EntityType>
         <EntityType Name="ProductsSold">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Prices" Relationship="BarProjectModel.FK__Prices__product___3F9B6DFF" FromRole="ProductsSold" ToRole="Price" />
-          <NavigationProperty Name="Product" Relationship="BarProjectModel.FK__ProductsSold__id__324172E1" FromRole="ProductsSold" ToRole="Product" />
-          <NavigationProperty Name="Receipt" Relationship="BarProjectModel.FK__ProductsS__recei__3335971A" FromRole="ProductsSold" ToRole="Receipt" />
+          <NavigationProperty Name="Prices" Relationship="BarProjectModel.FK__Prices__product___53A266AC" FromRole="ProductsSold" ToRole="Price" />
+          <NavigationProperty Name="Product" Relationship="BarProjectModel.FK__ProductsSold__id__4C0144E4" FromRole="ProductsSold" ToRole="Product" />
+          <NavigationProperty Name="Receipt" Relationship="BarProjectModel.FK__ProductsS__recei__4CF5691D" FromRole="ProductsSold" ToRole="Receipt" />
         </EntityType>
         <EntityType Name="ProductsStored">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Ingredients" Relationship="BarProjectModel.FK__Ingredien__ingre__39E294A9" FromRole="ProductsStored" ToRole="Ingredient" />
-          <NavigationProperty Name="Product" Relationship="BarProjectModel.FK__ProductsStor__id__361203C5" FromRole="ProductsStored" ToRole="Product" />
+          <NavigationProperty Name="Ingredients" Relationship="BarProjectModel.FK__Ingredien__ingre__50C5FA01" FromRole="ProductsStored" ToRole="Ingredient" />
+          <NavigationProperty Name="Product" Relationship="BarProjectModel.FK__ProductsStor__id__4924D839" FromRole="ProductsStored" ToRole="Product" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ingredients" Relationship="BarProjectModel.FK__Ingredien__recei__38EE7070" FromRole="Receipt" ToRole="Ingredient" />
-          <NavigationProperty Name="ProductsSolds" Relationship="BarProjectModel.FK__ProductsS__recei__3335971A" FromRole="Receipt" ToRole="ProductsSold" />
+          <NavigationProperty Name="Ingredients" Relationship="BarProjectModel.FK__Ingredien__recei__4FD1D5C8" FromRole="Receipt" ToRole="Ingredient" />
+          <NavigationProperty Name="ProductsSolds" Relationship="BarProjectModel.FK__ProductsS__recei__4CF5691D" FromRole="Receipt" ToRole="ProductsSold" />
         </EntityType>
         <EntityType Name="Tax">
           <Key>
@@ -572,7 +606,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tax_name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="tax_value" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="BarProjectModel.FK__Products__tax_id__2F650636" FromRole="Tax" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="BarProjectModel.FK__Products__tax_id__4460231C" FromRole="Tax" ToRole="Product" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -581,7 +615,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="unit_name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="convert_factor" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="BarProjectModel.FK__Products__unit_i__2E70E1FD" FromRole="Unit" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="BarProjectModel.FK__Products__unit_i__436BFEE3" FromRole="Unit" ToRole="Product" />
           <NavigationProperty Name="UnitType" Relationship="BarProjectModel.FK__Units__unit_type__12C8C788" FromRole="Unit" ToRole="UnitType" />
         </EntityType>
         <EntityType Name="UnitType">
@@ -624,11 +658,11 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <End Type="BarProjectModel.Category" Role="Category" Multiplicity="0..1" />
           <End Type="BarProjectModel.Category" Role="Category1" Multiplicity="*" />
         </Association>
-        <Association Name="FK__Products__catego__2D7CBDC4">
+        <Association Name="FK__Products__catego__4277DAAA">
           <End Type="BarProjectModel.Category" Role="Category" Multiplicity="0..1" />
           <End Type="BarProjectModel.Product" Role="Product" Multiplicity="*" />
         </Association>
-        <Association Name="FK__Ingredien__ingre__39E294A9">
+        <Association Name="FK__Ingredien__ingre__50C5FA01">
           <End Type="BarProjectModel.ProductsStored" Role="ProductsStored" Multiplicity="1" />
           <End Type="BarProjectModel.Ingredient" Role="Ingredient" Multiplicity="*" />
           <ReferentialConstraint>
@@ -640,7 +674,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ingredien__recei__38EE7070">
+        <Association Name="FK__Ingredien__recei__4FD1D5C8">
           <End Type="BarProjectModel.Receipt" Role="Receipt" Multiplicity="1" />
           <End Type="BarProjectModel.Ingredient" Role="Ingredient" Multiplicity="*" />
           <ReferentialConstraint>
@@ -652,7 +686,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Prices__product___3F9B6DFF">
+        <Association Name="FK__Prices__product___53A266AC">
           <End Type="BarProjectModel.ProductsSold" Role="ProductsSold" Multiplicity="1" />
           <End Type="BarProjectModel.Price" Role="Price" Multiplicity="*" />
           <ReferentialConstraint>
@@ -664,15 +698,15 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products__tax_id__2F650636">
+        <Association Name="FK__Products__tax_id__4460231C">
           <End Type="BarProjectModel.Tax" Role="Tax" Multiplicity="0..1" />
           <End Type="BarProjectModel.Product" Role="Product" Multiplicity="*" />
         </Association>
-        <Association Name="FK__Products__unit_i__2E70E1FD">
+        <Association Name="FK__Products__unit_i__436BFEE3">
           <End Type="BarProjectModel.Unit" Role="Unit" Multiplicity="0..1" />
           <End Type="BarProjectModel.Product" Role="Product" Multiplicity="*" />
         </Association>
-        <Association Name="FK__ProductsSold__id__324172E1">
+        <Association Name="FK__ProductsSold__id__4C0144E4">
           <End Type="BarProjectModel.Product" Role="Product" Multiplicity="1" />
           <End Type="BarProjectModel.ProductsSold" Role="ProductsSold" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -684,7 +718,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsStor__id__361203C5">
+        <Association Name="FK__ProductsStor__id__4924D839">
           <End Type="BarProjectModel.Product" Role="Product" Multiplicity="1" />
           <End Type="BarProjectModel.ProductsStored" Role="ProductsStored" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -696,7 +730,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductsS__recei__3335971A">
+        <Association Name="FK__ProductsS__recei__4CF5691D">
           <End Type="BarProjectModel.Receipt" Role="Receipt" Multiplicity="0..1" />
           <End Type="BarProjectModel.ProductsSold" Role="ProductsSold" Multiplicity="*" />
         </Association>
@@ -704,7 +738,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
           <End Type="BarProjectModel.UnitType" Role="UnitType" Multiplicity="0..1" />
           <End Type="BarProjectModel.Unit" Role="Unit" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -847,7 +881,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </EndProperty>
             <Condition ColumnName="overriding_category" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK__Products__catego__2D7CBDC4" TypeName="BarProjectModel.FK__Products__catego__2D7CBDC4" StoreEntitySet="Products">
+          <AssociationSetMapping Name="FK__Products__catego__4277DAAA" TypeName="BarProjectModel.FK__Products__catego__4277DAAA" StoreEntitySet="Products">
             <EndProperty Name="Product">
               <ScalarProperty Name="id" ColumnName="id" />
             </EndProperty>
@@ -856,7 +890,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </EndProperty>
             <Condition ColumnName="category_id" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK__Products__tax_id__2F650636" TypeName="BarProjectModel.FK__Products__tax_id__2F650636" StoreEntitySet="Products">
+          <AssociationSetMapping Name="FK__Products__tax_id__4460231C" TypeName="BarProjectModel.FK__Products__tax_id__4460231C" StoreEntitySet="Products">
             <EndProperty Name="Product">
               <ScalarProperty Name="id" ColumnName="id" />
             </EndProperty>
@@ -865,7 +899,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </EndProperty>
             <Condition ColumnName="tax_id" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK__Products__unit_i__2E70E1FD" TypeName="BarProjectModel.FK__Products__unit_i__2E70E1FD" StoreEntitySet="Products">
+          <AssociationSetMapping Name="FK__Products__unit_i__436BFEE3" TypeName="BarProjectModel.FK__Products__unit_i__436BFEE3" StoreEntitySet="Products">
             <EndProperty Name="Product">
               <ScalarProperty Name="id" ColumnName="id" />
             </EndProperty>
@@ -874,7 +908,7 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </EndProperty>
             <Condition ColumnName="unit_id" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK__ProductsS__recei__3335971A" TypeName="BarProjectModel.FK__ProductsS__recei__3335971A" StoreEntitySet="ProductsSold">
+          <AssociationSetMapping Name="FK__ProductsS__recei__4CF5691D" TypeName="BarProjectModel.FK__ProductsS__recei__4CF5691D" StoreEntitySet="ProductsSold">
             <EndProperty Name="ProductsSold">
               <ScalarProperty Name="id" ColumnName="id" />
             </EndProperty>
@@ -892,7 +926,11 @@ warning 6035: The relationship 'FK__Users__permissio__7EC1CEDB' has columns that
             </EndProperty>
             <Condition ColumnName="unit_type" IsNull="false" />
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="addCategory" FunctionName="BarProjectModel.Store.addCategory" />
+          <FunctionImportMapping FunctionImportName="addIngredient" FunctionName="BarProjectModel.Store.addIngredient" />
+          <FunctionImportMapping FunctionImportName="addReceipt" FunctionName="BarProjectModel.Store.addReceipt" />
+          <FunctionImportMapping FunctionImportName="removeCategory" FunctionName="BarProjectModel.Store.removeCategory" />
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
