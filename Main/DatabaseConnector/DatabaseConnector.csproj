@@ -127,7 +127,6 @@
     <None Include="BarProjectEntities.edmx.diagram">
       <DependentUpon>BarProjectEntities.edmx</DependentUpon>
     </None>
-    <None Include="cstrings.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
