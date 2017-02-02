@@ -178,8 +178,6 @@ namespace Project.BarApplication
                 MenuLinks[0].Links.Remove(login);
                 RedirectAfterLogin();
             }
-
         }
-
     }
 }

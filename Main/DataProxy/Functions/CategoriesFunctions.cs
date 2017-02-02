@@ -12,13 +12,13 @@ namespace DataProxy.Functions
 
     public static class CategoriesFunctions
     {
-        public static IEnumerable<ShowableCategory> GetAllCategories()
+        public static List<ShowableCategory> GetAllCategories()
         {
             using (var db = new BarProjectEntities())
             {
                 return (from data in db.Categories
-                       orderby data.id
-                       select data).ToShowableCategories().ToList();
+                        orderby data.id
+                        select data).ToAnotherType<Category, ShowableCategory>().ToList();
             }
         }
     }

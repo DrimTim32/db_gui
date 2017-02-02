@@ -60,7 +60,6 @@
     <Compile Include="Entities\ShowableCategory.cs" />
     <Compile Include="Entities\Tax.cs" />
     <Compile Include="Extensions\BasicExtensions.cs" />
-    <Compile Include="Extensions\CategoriesExtensions.cs" />
     <Compile Include="Extensions\TaxExtensions.cs" />
     <Compile Include="Extensions\UsersExtensions.cs" />
     <Compile Include="Functions\CategoriesFunctions.cs" />
