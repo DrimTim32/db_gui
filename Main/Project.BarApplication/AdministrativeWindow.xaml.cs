@@ -13,9 +13,10 @@ namespace Project.BarApplication
     using FirstFloor.ModernUI.Windows.Controls;
     using FirstFloor.ModernUI.Windows.Navigation;
     using Pages.Uncategorized;
+    using Pages.Warehouse;
 
     public partial class AdministrativeWindow : ModernWindow
-    { 
+    {
         private LinkGroupCollection MenuLinks { get; set; } = new LinkGroupCollection();
         private UserPrivileges? privileges = null;
         public AdministrativeWindow()
@@ -53,20 +54,8 @@ namespace Project.BarApplication
                 DisplayName = Config.Pages.PageNames.Users,
                 Source = Config.Pages.PageUrls.Administration.Users
             };
-            var taxes = new Link
-            {
-                DisplayName = Config.Pages.PageNames.Taxes,
-                Source = Config.Pages.PageUrls.Administration.Taxes
-            };
-            var units = new Link
-            {
-                DisplayName = Config.Pages.PageNames.Units,
-                Source = Config.Pages.PageUrls.Administration.Units
-            };
             var group = new LinkGroup();
             group.Links.Add(users);
-            group.Links.Add(taxes);
-            group.Links.Add(units);
             group.DisplayName = Config.Pages.PagesGroupNames.Administration;
             MenuLinks.Add(group);
         }
@@ -87,17 +76,36 @@ namespace Project.BarApplication
                 DisplayName = Config.Pages.PageNames.Prices,
                 Source = Config.Pages.PageUrls.Warehouse.Prices
             };
-            var Categories = new Link
-            {
-                DisplayName = Config.Pages.PageNames.Categories,
-                Source = Config.Pages.PageUrls.Warehouse.Categories
-            };
 
             var group = new LinkGroup();
             group.Links.Add(Recipies);
             group.Links.Add(Prices);
-            group.Links.Add(Categories);
             group.DisplayName = Config.Pages.PagesGroupNames.Warehouse;
+            MenuLinks.Add(group);
+        }
+
+        private void SetMenagement()
+        {
+            var Categories = new Link
+            {
+                DisplayName = Config.Pages.PageNames.Categories,
+                Source = Config.Pages.PageUrls.Menagement.Categories
+            };
+            var taxes = new Link
+            {
+                DisplayName = Config.Pages.PageNames.Taxes,
+                Source = Config.Pages.PageUrls.Menagement.Taxes
+            };
+            var units = new Link
+            {
+                DisplayName = Config.Pages.PageNames.Units,
+                Source = Config.Pages.PageUrls.Menagement.Units
+            };
+            var group = new LinkGroup();
+            group.Links.Add(Categories);
+            group.Links.Add(taxes);
+            group.Links.Add(units);
+            group.DisplayName = Config.Pages.PagesGroupNames.Menagement;
             MenuLinks.Add(group);
         }
         #endregion
@@ -158,6 +166,7 @@ namespace Project.BarApplication
         {
             SetAdministrationGroup();
             ClearLogin();
+            SetMenagement();
         }
 
         private void OpenCook()

@@ -17,6 +17,7 @@ namespace Project.BarApplication
                 public const string Welcome = "Welcome";
                 public const string Administration = "Administration";
                 public const string Warehouse = "Warehouse";
+                public const string Menagement = "Menagement";
             }
             public static class PageNames
             {
@@ -48,9 +49,15 @@ namespace Project.BarApplication
                 {
                     private static readonly string Source = Path.Combine(PagesSource, "Administration");
                     public static readonly Uri Users = new Uri(Path.Combine(Source, "Users.xaml"), UriKind.Relative);
+
+                }
+
+                public class Menagement
+                {
+                    private static readonly string Source = Path.Combine(PagesSource, "Menagement");
+                    public static readonly Uri Categories = new Uri(Path.Combine(Source, "Categories.xaml"), UriKind.Relative);
                     public static readonly Uri Taxes = new Uri(Path.Combine(Source, "Taxes.xaml"), UriKind.Relative);
                     public static readonly Uri Units = new Uri(Path.Combine(Source, "Units.xaml"), UriKind.Relative);
-
                 }
 
                 public class Warehouse
@@ -58,7 +65,6 @@ namespace Project.BarApplication
                     private static readonly string Source = Path.Combine(PagesSource, "Warehouse");
                     public static readonly Uri Recipies = new Uri(Path.Combine(Source, "Recipies.xaml"), UriKind.Relative);
                     public static readonly Uri Prices = new Uri(Path.Combine(Source, "Prices.xaml"), UriKind.Relative);
-                    public static readonly Uri Categories = new Uri(Path.Combine(Source, "Categories.xaml"), UriKind.Relative);
                 }
             }
 

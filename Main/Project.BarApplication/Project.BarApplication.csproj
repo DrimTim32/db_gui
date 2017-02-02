@@ -91,7 +91,7 @@
     <Compile Include="Pages\Uncategorized\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Warehouse\Categories.xaml.cs">
+    <Compile Include="Pages\Menagement\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Warehouse\Prices.xaml.cs">
@@ -189,11 +189,11 @@
       <DependentUpon>AdministrativeWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Administration\Taxes.xaml">
+    <Page Include="Pages\Menagement\Taxes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Administration\Units.xaml">
+    <Page Include="Pages\Menagement\Units.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,10 +205,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Menagement\Categories.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\Settings\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -217,7 +213,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Warehouse\Categories.xaml">
+    <Page Include="Pages\Menagement\Categories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,10 +231,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\Administration\Taxes.xaml.cs">
+    <Compile Include="Pages\Menagement\Taxes.xaml.cs">
       <DependentUpon>Taxes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Administration\Units.xaml.cs">
+    <Compile Include="Pages\Menagement\Units.xaml.cs">
       <DependentUpon>Units.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Main.xaml.cs">
@@ -246,9 +242,6 @@
     </Compile>
     <Compile Include="Pages\Administration\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Menagement\Categories.xaml.cs">
-      <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Settings\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>

@@ -20,7 +20,7 @@ namespace DatabaseConnector
         public virtual Category Category { get; set; }
         public virtual Tax Tax { get; set; }
         public virtual Unit Unit { get; set; }
-        public virtual ProductsSold ProductsSold { get; set; }
         public virtual ProductsStored ProductsStored { get; set; }
+        public virtual ProductsSold ProductsSold { get; set; }
     }
 }

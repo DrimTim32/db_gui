@@ -1,81 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace Project.BarApplication.Pages.Warehouse
+﻿namespace Project.BarApplication.Pages.Menagement
 {
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
     using DataProxy.Entities;
     using DataProxy.Functions;
     using FirstFloor.ModernUI.Windows.Controls;
 
-    public partial class Categories : Page
+    public partial class Units : Page
     {
-        private ObservableCollection<ShowableCategory> _categories;
-        public ObservableCollection<ShowableCategory> CategoriesList
+        private ObservableCollection<ShowableUnit> _unitsList;
+        public ObservableCollection<ShowableUnit> UnitsLits
         {
             get
             {
-                if (_categories == null)
-                    _categories = new ObservableCollection<ShowableCategory>(CategoriesFunctions.GetAllCategories());
-                return _categories;
+                if (_unitsList == null)
+                    _unitsList = new ObservableCollection<ShowableUnit>(UnitsFunctions.GetAllUnits());
+                return _unitsList;
             }
-            set { _categories = value; }
+            set { _unitsList = value; }
         }
-
-        private List<string> PossibleOverridingCategories
-        {
-            get { return CategoriesList.Select(x => x.Name).ToList(); }
-        }
-
-        public Categories()
+        public Units()
         {
             InitializeComponent();
-
-            DataGridCombo.ItemsSource = PossibleOverridingCategories;
+            DataGridCombo.ItemsSource = UnitsFunctions.GetTypes();
+            DataGrid.RowEditEnding += DataGrid_RowEditEnding;
             DataGrid.PreviewKeyDown += DataGrid_PreviewKeyDown;
-            DataGrid.RowEditEnding += DataGrid_RowEditEnding; 
 
         }
-         
 
-        private bool CategoryIsEmpty(ShowableCategory cat)
+        private bool IsUnitEmpty(ShowableUnit unit)
         {
-            return cat.Name == null && cat.Slug == null;
+            return unit.Name == null && unit.Type == null;
         }
         private void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
             var grid = sender as DataGrid;
-            if (this.DataGrid.SelectedItem != null && grid != null)
+            if (DataGrid.SelectedItem != null && grid != null)
             {
-                var cat = (ShowableCategory)e.Row.Item;
+                var cat = (ShowableUnit)e.Row.Item;
                 grid.RowEditEnding -= DataGrid_RowEditEnding;
                 grid.CommitEdit();
                 string message = "";
 
-                if (CategoryIsEmpty(cat))
-                {
-                    message = "You cannot create empty category";
-                }
+                if (IsUnitEmpty(cat))
+                    message = "You cannot create empty unit";
                 if (string.IsNullOrEmpty(cat.Name))
-                {
                     message = "You cannot create category with empty name";
-                }
-                if (string.IsNullOrEmpty(cat.Slug))
-                {
-                    message = "You cannot create category with empty slug";
-                }
+                if (string.IsNullOrEmpty(cat.Type))
+                    message = "You cannot create category with empty type";
                 if (message != "")
                 {
                     grid.CancelEdit();
@@ -86,7 +61,7 @@ namespace Project.BarApplication.Pages.Warehouse
                     return;
                 }
                 grid.RowEditEnding += DataGrid_RowEditEnding;
-                var q = CategoriesFunctions.AddCategory(cat);
+                var q = UnitsFunctions.AddUnit(cat);
                 if (q != "")
                     ModernDialog.ShowMessage(q, "Problem with writing to database", MessageBoxButton.OK);
                 RefreshData();
@@ -110,8 +85,8 @@ namespace Project.BarApplication.Pages.Warehouse
                     }
                     else
                     {
-                        var cat = (ShowableCategory)dgr.Item;
-                        var data = CategoriesFunctions.RemoveCategory(cat.Id);
+                        var cat = (ShowableUnit)dgr.Item;
+                        var data = UnitsFunctions.RemoveUnit(cat.Name);
                         RefreshData();
                         if (data != "")
                         {
@@ -121,22 +96,15 @@ namespace Project.BarApplication.Pages.Warehouse
                 }
             }
         }
-
         private void RefreshData()
         {
-            CategoriesList.Clear();
-            var tmp = CategoriesFunctions.GetAllCategories();
+            UnitsLits.Clear();
+            var tmp = UnitsFunctions.GetAllUnits();
             foreach (var showableCategory in tmp)
             {
-                CategoriesList.Add(showableCategory);
+                UnitsLits.Add(showableCategory);
             }
-            RefreshOverridingPossibilities();
             DataGrid.Items.Refresh();
         }
-        private void RefreshOverridingPossibilities()
-        {
-            DataGridCombo.ItemsSource = PossibleOverridingCategories;
-        }
-
     }
 }
