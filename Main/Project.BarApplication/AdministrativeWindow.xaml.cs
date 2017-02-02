@@ -15,7 +15,7 @@ namespace Project.BarApplication
     using Pages.Uncategorized;
 
     public partial class AdministrativeWindow : ModernWindow
-    {
+    { 
         private LinkGroupCollection MenuLinks { get; set; } = new LinkGroupCollection();
         private UserPrivileges? privileges = null;
         public AdministrativeWindow()
@@ -23,7 +23,7 @@ namespace Project.BarApplication
             InitializeComponent();
             Action<UserPrivileges> afterLogin = AfterLogin;
             Application.Current.Properties["AfterLogin"] = afterLogin;
-            this.MenuLinkGroups = MenuLinks;
+            MenuLinkGroups = MenuLinks;
             SetTitleLink();
             SetWelcomeGroup();
         }

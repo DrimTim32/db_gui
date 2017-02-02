@@ -23,6 +23,13 @@ namespace Project.BarApplication.Content.Users
         public Waiter()
         {
             InitializeComponent();
+            this.Loaded += (s, e) => { Except(); };
         }
+
+        public void Except()
+        {
+            throw new Exception("asdf");
+        }
+         
     }
 }
