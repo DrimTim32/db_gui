@@ -17,10 +17,8 @@ namespace Project.BarApplication.Pages.Warehouse
 {
     using DataProxy.Entities;
     using DataProxy.Functions;
+    using FirstFloor.ModernUI.Windows.Controls;
 
-    /// <summary>
-    /// Interaction logic for Categories.xaml
-    /// </summary>
     public partial class Categories : Page
     {
         private List<ShowableCategory> CategoriesList { get; set; }
@@ -36,7 +34,25 @@ namespace Project.BarApplication.Pages.Warehouse
             DataGrid.DataContext = CategoriesList;
             DataGridCombo.ItemsSource = PossibleOverridingCategories;
             DataGrid.AddingNewItem += DataGrid_AddingNewItem;
+            DataGrid.PreviewKeyDown += DataGrid_PreviewKeyDown;
 
+        }
+
+        void DataGrid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            DataGrid dg = sender as DataGrid;
+            if (dg != null)
+            {
+                DataGridRow dgr = (DataGridRow)(dg.ItemContainerGenerator.ContainerFromIndex(dg.SelectedIndex));
+                if (e.Key == Key.Delete && !dgr.IsEditing)
+                {
+                    // User is attempting to delete the row
+                    var result = ModernDialog.ShowMessage(
+                        "About to delete the current row.\n\nProceed?",
+                        "Delete", MessageBoxButton.YesNo);
+                    e.Handled = (result == MessageBoxResult.No);
+                }
+            }
         }
 
         private void RefreshOverridingPossibilities()
@@ -47,5 +63,6 @@ namespace Project.BarApplication.Pages.Warehouse
         {
             RefreshOverridingPossibilities();
         }
+
     }
 }
