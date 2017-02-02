@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9860F44A-F7CA-42D7-82A0-0EBA173208ED}</ProjectGuid>
+    <ProjectGuid>{14DB109B-E4EA-4DB4-BD82-090A96D7677A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DatabaseConnector</RootNamespace>
-    <AssemblyName>DatabaseConnector</AssemblyName>
+    <RootNamespace>DataProxy</RootNamespace>
+    <AssemblyName>DataProxy</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,14 +44,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,92 +57,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarProjectEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BarProjectEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BarProjectEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BarProjectEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BarProjectEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Category.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database_firewall_rules.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmployePermission.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ingredient.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Price.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductsSold.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductsStored.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\ShowableCategory.cs" />
+    <Compile Include="Entities\Tax.cs" />
+    <Compile Include="Extensions\BasicExtensions.cs" />
+    <Compile Include="Extensions\CategoriesExtensions.cs" />
+    <Compile Include="Extensions\TaxExtensions.cs" />
+    <Compile Include="Extensions\UsersExtensions.cs" />
+    <Compile Include="Functions\CategoriesFunctions.cs" />
+    <Compile Include="Functions\TaxesFunctions.cs" />
+    <Compile Include="Functions\UserFunctions.cs" />
+    <Compile Include="Entities\UserPrivileges.cs" />
+    <Compile Include="Entities\ShowableUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Receipt.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tax.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Unit.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UnitType.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>BarProjectEntities.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <EntityDeploy Include="BarProjectEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BarProjectEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="BarProjectEntities.edmx.diagram">
-      <DependentUpon>BarProjectEntities.edmx</DependentUpon>
-    </None>
-    <None Include="cstrings.config" />
+    <ProjectReference Include="..\DatabaseConnector\DatabaseConnector.csproj">
+      <Project>{9860f44a-f7ca-42d7-82a0-0eba173208ed}</Project>
+      <Name>DatabaseConnector</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BarProjectEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BarProjectEntities.edmx</DependentUpon>
-      <LastGenOutput>BarProjectEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="BarProjectEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BarProjectEntities.edmx</DependentUpon>
-      <LastGenOutput>BarProjectEntities.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
