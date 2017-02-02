@@ -30,17 +30,26 @@ namespace DataProxy.Functions
                 {
                     int? overriding = null;
                     if (cat.Overriding != "")
-                        overriding = db.Categories.Where(x => x.category_name == cat.Overriding).Select(x => x.id).FirstOrDefault();
+                    {
+                        var q = db.Categories.Where(x => x.category_name == cat.Overriding).Select(x => x).FirstOrDefault();
+                        if (q != null)
+                        {
+                            overriding = q.id;
+                        }
+                    }
                     db.addCategory(cat.Name, cat.Slug, overriding);
                 }
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message += "\nInner:" + ex.InnerException.Message;
+                return message;
             }
             return "";
         }
-        public static string RemoveCategory(int id)
+        public static string RemoveCategory(int? id)
         {
             try
             {
@@ -51,7 +60,10 @@ namespace DataProxy.Functions
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message += "\nInner:" + ex.InnerException.Message;
+                return message;
             }
             return "";
         }

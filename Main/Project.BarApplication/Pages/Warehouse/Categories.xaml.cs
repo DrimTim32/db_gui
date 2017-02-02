@@ -22,8 +22,8 @@ namespace Project.BarApplication.Pages.Warehouse
 
     public partial class Categories : Page
     {
-        private IList<ShowableCategory> _categories;
-        public IList<ShowableCategory> CategoriesList
+        private ObservableCollection<ShowableCategory> _categories;
+        public ObservableCollection<ShowableCategory> CategoriesList
         {
             get
             {
@@ -42,27 +42,55 @@ namespace Project.BarApplication.Pages.Warehouse
         public Categories()
         {
             InitializeComponent();
+
             DataGridCombo.ItemsSource = PossibleOverridingCategories;
             DataGrid.PreviewKeyDown += DataGrid_PreviewKeyDown;
-            DataGrid.RowEditEnding += DataGrid_RowEditEnding;
+            DataGrid.RowEditEnding += DataGrid_RowEditEnding; 
 
         }
+         
 
+        private bool CategoryIsEmpty(ShowableCategory cat)
+        {
+            return cat.Name == null && cat.Slug == null;
+        }
         private void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            if (this.DataGrid.SelectedItem != null)
+            var grid = sender as DataGrid;
+            if (this.DataGrid.SelectedItem != null && grid != null)
             {
-                (sender as DataGrid).RowEditEnding -= DataGrid_RowEditEnding;
-                (sender as DataGrid).CommitEdit();
-                (sender as DataGrid).Items.Refresh();
-                (sender as DataGrid).RowEditEnding += DataGrid_RowEditEnding;
                 var cat = (ShowableCategory)e.Row.Item;
+                grid.RowEditEnding -= DataGrid_RowEditEnding;
+                grid.CommitEdit();
+                string message = "";
+
+                if (CategoryIsEmpty(cat))
+                {
+                    message = "You cannot create empty category";
+                }
+                if (string.IsNullOrEmpty(cat.Name))
+                {
+                    message = "You cannot create category with empty name";
+                }
+                if (string.IsNullOrEmpty(cat.Slug))
+                {
+                    message = "You cannot create category with empty slug";
+                }
+                if (message != "")
+                {
+                    grid.CancelEdit();
+                    grid.RowEditEnding += DataGrid_RowEditEnding;
+                    ModernDialog.ShowMessage(message, "Problem with new item!", MessageBoxButton.OK);
+                    grid.Items.Refresh();
+                    RefreshData();
+                    return;
+                }
+                grid.RowEditEnding += DataGrid_RowEditEnding;
                 var q = CategoriesFunctions.AddCategory(cat);
                 if (q != "")
                     ModernDialog.ShowMessage(q, "Problem with writing to database", MessageBoxButton.OK);
-                RefreshOverridingPossibilities();
+                RefreshData();
             }
-            else return;
         }
 
         void DataGrid_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -84,11 +112,27 @@ namespace Project.BarApplication.Pages.Warehouse
                     {
                         var cat = (ShowableCategory)dgr.Item;
                         var data = CategoriesFunctions.RemoveCategory(cat.Id);
+                        RefreshData();
+                        if (data != "")
+                        {
+                            ModernDialog.ShowMessage(data, "Problem with writing to database", MessageBoxButton.OK);
+                        }
                     }
                 }
             }
         }
 
+        private void RefreshData()
+        {
+            CategoriesList.Clear();
+            var tmp = CategoriesFunctions.GetAllCategories();
+            foreach (var showableCategory in tmp)
+            {
+                CategoriesList.Add(showableCategory);
+            }
+            RefreshOverridingPossibilities();
+            DataGrid.Items.Refresh();
+        }
         private void RefreshOverridingPossibilities()
         {
             DataGridCombo.ItemsSource = PossibleOverridingCategories;

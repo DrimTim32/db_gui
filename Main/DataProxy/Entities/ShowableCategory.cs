@@ -4,7 +4,7 @@
     using System.ComponentModel;
     using DatabaseConnector;
 
-    public class ShowableCategory 
+    public class ShowableCategory
     {
         public ShowableCategory(Category cat)
         {
@@ -13,10 +13,13 @@
             Overriding = cat.Category1 != null ? cat.Category1.category_name : "";
             Id = cat.id;
         }
-        public ShowableCategory() { }
+        public ShowableCategory()
+        {
+            Id = null;
+        }
         public string Slug { get; set; }
         public string Name { get; set; }
         public string Overriding { get; set; }
-        public int Id;
+        public int? Id;
     }
 }
