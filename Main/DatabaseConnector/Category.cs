@@ -24,6 +24,7 @@ namespace DatabaseConnector
         public int id { get; set; }
         public string slug { get; set; }
         public string category_name { get; set; }
+        public Nullable<int> overriding_category { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Categories1 { get; set; }

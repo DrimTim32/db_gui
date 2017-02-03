@@ -58,17 +58,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\ShowableCategory.cs" />
+    <Compile Include="Entities\ShowableSimpleProduct.cs" />
+    <Compile Include="Entities\ShowableSoldProduct.cs" />
     <Compile Include="Entities\ShowableUnit.cs" />
     <Compile Include="Entities\ShowableTax.cs" />
     <Compile Include="Extensions\BasicExtensions.cs" />
-    <Compile Include="Extensions\TaxExtensions.cs" />
-    <Compile Include="Extensions\UsersExtensions.cs" />
     <Compile Include="Functions\CategoriesFunctions.cs" />
+    <Compile Include="Functions\ProductsFunctions.cs" />
     <Compile Include="Functions\TaxesFunctions.cs" />
     <Compile Include="Functions\UnitsFunctions.cs" />
     <Compile Include="Functions\UserFunctions.cs" />
     <Compile Include="Entities\UserPrivileges.cs" />
     <Compile Include="Entities\ShowableUser.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

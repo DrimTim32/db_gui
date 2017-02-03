@@ -15,6 +15,9 @@ namespace DatabaseConnector
     public partial class Product
     {
         public int id { get; set; }
+        public Nullable<int> category_id { get; set; }
+        public Nullable<int> unit_id { get; set; }
+        public Nullable<int> tax_id { get; set; }
         public string name { get; set; }
     
         public virtual Category Category { get; set; }
@@ -22,5 +25,6 @@ namespace DatabaseConnector
         public virtual Unit Unit { get; set; }
         public virtual ProductsStored ProductsStored { get; set; }
         public virtual ProductsSold ProductsSold { get; set; }
+        public virtual ProductsStored ProductsStored1 { get; set; }
     }
 }

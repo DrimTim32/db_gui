@@ -12,8 +12,6 @@
     <ScrollViewer>
         <StackPanel MinWidth="200">
             <TextBlock Text="Add new user" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-
-            <!-- actual form starts here -->
             <StackPanel x:Name="Form" Orientation="Vertical">
 
                 <StackPanel.DataContext>

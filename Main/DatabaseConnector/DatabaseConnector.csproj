@@ -93,7 +93,13 @@
     <Compile Include="Product.cs">
       <DependentUpon>BarProjectEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="productDetails_Result.cs">
+      <DependentUpon>BarProjectEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="productsByCategory_Result.cs">
+      <DependentUpon>BarProjectEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="productSimple.cs">
       <DependentUpon>BarProjectEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductsSold.cs">

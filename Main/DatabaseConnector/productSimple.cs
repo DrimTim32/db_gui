@@ -12,16 +12,12 @@ namespace DatabaseConnector
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class productSimple
     {
         public int id { get; set; }
-        public string username { get; set; }
-        public byte[] password { get; set; }
-        public string password_salt { get; set; }
         public string name { get; set; }
-        public string surname { get; set; }
-        public Nullable<byte> permission { get; set; }
-    
-        public virtual EmployePermission EmployePermission { get; set; }
+        public string category_name { get; set; }
+        public Nullable<bool> sold { get; set; }
+        public Nullable<bool> stored { get; set; }
     }
 }

@@ -10,11 +10,11 @@ namespace DataProxy.Functions
 
     public static class TaxesFunctions
     {
-        public static IEnumerable<Entities.ShowableTax> GetAllTaxes()
+        public static IEnumerable<ShowableTax> GetAllTaxes()
         {
             using (var db = new BarProjectEntities())
             {
-                return db.Taxes.Select(x => x).ToAnotherType<Tax, Entities.ShowableTax>().ToList();
+                return db.Taxes.Select(x => x).ToAnotherType<Tax, ShowableTax>().ToList();
             }
         }
         public static string AddTax(ShowableTax tax)

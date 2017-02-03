@@ -32,6 +32,8 @@ namespace Project.BarApplication
                 public const string Recipies = "Recipies";
                 public const string Prices = "Prices";
                 public const string Categories = "Categories";
+
+                public const string Products = "Products";
             }
 
             public static class PageUrls
@@ -65,6 +67,7 @@ namespace Project.BarApplication
                     private static readonly string Source = Path.Combine(PagesSource, "Warehouse");
                     public static readonly Uri Recipies = new Uri(Path.Combine(Source, "Recipies.xaml"), UriKind.Relative);
                     public static readonly Uri Prices = new Uri(Path.Combine(Source, "Prices.xaml"), UriKind.Relative);
+                    public static readonly Uri Products = new Uri(Path.Combine(Source, "Products.xaml"), UriKind.Relative);
                 }
             }
 

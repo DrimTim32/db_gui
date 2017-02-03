@@ -76,9 +76,15 @@ namespace Project.BarApplication
                 DisplayName = Config.Pages.PageNames.Prices,
                 Source = Config.Pages.PageUrls.Warehouse.Prices
             };
+            var products = new Link
+            {
+                DisplayName = Config.Pages.PageNames.Products,
+                Source = Config.Pages.PageUrls.Warehouse.Products
+            };
 
             var group = new LinkGroup();
             group.Links.Add(Recipies);
+            group.Links.Add(products);
             group.Links.Add(Prices);
             group.DisplayName = Config.Pages.PagesGroupNames.Warehouse;
             MenuLinks.Add(group);

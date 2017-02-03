@@ -10,18 +10,17 @@
 namespace DatabaseConnector
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class User
+    public partial class productDetails_Result
     {
         public int id { get; set; }
-        public string username { get; set; }
-        public byte[] password { get; set; }
-        public string password_salt { get; set; }
         public string name { get; set; }
-        public string surname { get; set; }
-        public Nullable<byte> permission { get; set; }
-    
-        public virtual EmployePermission EmployePermission { get; set; }
+        public Nullable<int> category_id { get; set; }
+        public string category_name { get; set; }
+        public Nullable<int> unit_id { get; set; }
+        public string unit_name { get; set; }
+        public Nullable<int> tax_id { get; set; }
+        public string tax_name { get; set; }
+        public double tax_value { get; set; }
     }
 }

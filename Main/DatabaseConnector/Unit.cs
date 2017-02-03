@@ -23,6 +23,7 @@ namespace DatabaseConnector
         public int id { get; set; }
         public string unit_name { get; set; }
         public double convert_factor { get; set; }
+        public Nullable<int> unit_type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

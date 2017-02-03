@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataProxy.Extensions
 {
+    using System.Data.Entity;
+
     public static class BasicExtensions
     {
-        public static IEnumerable<T1> ToAnotherType<T2, T1>(this IEnumerable<T2> data) 
+        public static IEnumerable<T1> ToAnotherType<T2, T1>(this IEnumerable<T2> data) where T2 : class
         {
             return data.Select(x => (T1)Activator.CreateInstance(typeof(T1), x));
-        }
+        } 
     }
 }
