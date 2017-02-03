@@ -53,7 +53,7 @@ namespace Project.BarApplication.Pages.Warehouse
                 var product = (ShowableSimpleProduct)dgr.Item;
                 if (product.IsSold)
                 {
-                    var url = $"../../Content/Warehouse/SoldProductPage.xaml?product_id={Guid.NewGuid()}";
+                    var url = $"../../Content/Warehouse/SoldProductPage.xaml?id={Guid.NewGuid()}";
                     BBCodeBlock bs = new BBCodeBlock();
                     try
                     { 

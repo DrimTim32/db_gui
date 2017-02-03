@@ -108,6 +108,19 @@ namespace DataProxy.Entities
 
         }
 
+        public void LoadFromAnother(ShowableSoldProduct product)
+        {
+            id = product.id;
+            Name = product.Name;
+            CategoryName = product.CategoryName;
+            UnitName = product.UnitName;
+            TaxName = product.TaxName;
+            TaxValue = product.TaxValue;
+            RecepitId = product.RecepitId;
+            PeriodStart = product.PeriodStart;
+            Price = product.Price;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

@@ -18,11 +18,13 @@ namespace Project.BarApplication.Content.Warehouse
     using System.Windows.Threading;
     using DataProxy.Entities;
     using DataProxy.Functions;
+    using FirstFloor.ModernUI.Windows;
+    using FirstFloor.ModernUI.Windows.Navigation;
 
     /// <summary>
     /// Interaction logic for SoldProductPage.xaml
     /// </summary>
-    public partial class SoldProductPage : Page
+    public partial class SoldProductPage : Page, IContent
     {
         private int productId { get; set; }
         public string MainTitle { get; set; }
@@ -43,23 +45,38 @@ namespace Project.BarApplication.Content.Warehouse
         }
         public SoldProductPage()
         {
-            InitializeComponent();
-            ReloadModel();
-            Loaded += SoldProductPage_Loaded;
+            InitializeComponent(); 
         }
-
-        private void SoldProductPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            ReloadModel();
-        }
-
-        private void ReloadModel()
+         
+        private void ReloadModel(string a)
         {
             Progress.IsIndeterminate = true;
             productId = (int)Application.Current.Properties["product_id"];
             MainTitle = $"Product number {productId}, with name {SoldProduct.Name}";
-            SoldProduct = ProductsFunctions.GetSoldProductsView(productId).First();  
+            SoldProduct.LoadFromAnother(ProductsFunctions.GetSoldProductsView(productId).First());
             Progress.IsIndeterminate = false;
-        } 
+        }
+
+        public void OnFragmentNavigation(FragmentNavigationEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var q = e.Content;
+            var p = e.NavigationType;
+            ReloadModel("navigation");
+        }
+
+        public void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }
